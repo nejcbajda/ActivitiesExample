@@ -18,6 +18,18 @@ public class ThirdActivity extends AppCompatActivity {
         mCount = getIntent().getIntExtra(MainActivity.EXTRA_COUNT, 0);
         TextView showCount = findViewById(R.id.show_count);
         showCount.setText(String.valueOf(mCount));
+
+        findViewById(R.id.main).setOnTouchListener(new OnSwipeTouchListener(this) {
+            @Override
+            public void onSwipeLeft() {
+                launchMain();
+            }
+
+            @Override
+            public void onSwipeRight() {
+                launchHello();
+            }
+        });
     }
 
     public void goToMain(View view) {
@@ -40,4 +52,6 @@ public class ThirdActivity extends AppCompatActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
+
+
 }
